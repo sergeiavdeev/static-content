@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  static-content:
+    build: .
+    image: static-content:${TAG}
+    command: java -jar static-content-1.0-SNAPSHOT.jar
+    environment:
+      spring.profiles.active: ${PROFILE}
+    networks:
+      - ttc-tops
+networks:
+  ttc-tops:
+    external: true
+    name: ttc-tops
+    driver: bridge
